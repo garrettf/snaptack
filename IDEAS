@@ -1,0 +1,25 @@
+Board:
+    belongs to one user
+    has many tacks
+    ----
+    name :string(256)
+    description :text
+    background :file
+    width :integer
+    height :integer
+
+Tack:
+    belongs to one board
+    has many photos
+    ----
+    name :string(256)
+    description :text
+    top :integer (pixels)
+    left :integer (pixels)
+
+Photo:
+    belongs to one tack
+    ----
+    title :string(256)
+    description :text
+    number :integer
