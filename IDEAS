@@ -23,3 +23,8 @@ Photo:
     title :string(256)
     description :text
     number :integer
+
+User:
+    has many boards
+    ----
+    name :string(256)
