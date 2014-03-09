@@ -1,0 +1,36 @@
+<h1>Boards#show</h1>
+<p>Find me in app/views/boards/show.html.erb</p>
+<h1>Name: <%= @board.name %></h1>
+<p>Description: <%= @board.description %></p>
+<p>Width: <%= @board.width %></p>
+<p>Height: <%= @board.height %></p>
+<h2>Tacks:</H2>
+<uL>
+<% @board.tacks.each do |tack| %>
+  <li>
+    <p>Name: <%= tack.name %></p>
+    <p>Description: <%= tack.description %></p>
+    <p>Top: <%= tack.top %></p>
+    <p>Left: <%= tack.left %></p>
+  </li>
+<% end %>
+</ul>
+  
+<button type="button" class="btn btn-primary btn-lg" id="tack_new_btn" data-toggle="modal" data-target="#tack_new" >
+    <span class="glyphicon glyphicon-pushpin"></span> Create new tack
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="tack_new" tabindex="-1" role="dialog" aria-labelledby="tack_new_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= render :partial => 'tacks/form', :tack => @tack %>
+    </div>
+  </div>
+</div>
+
+
+
+<br>
+<%= image_tag @board.image.url %>

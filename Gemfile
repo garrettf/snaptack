@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 1.2'
 
 # Managed attachments
 gem "paperclip", "~> 4.1"
+# Cloud storage for said attachments
+gem "fog", "~> 1.20"
+
+gem 'bootstrap-sass', '~> 3.1.1'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -1,4 +1,15 @@
 Snaptack::Application.routes.draw do
+  #get "boards/new"
+  #get "boards/create"
+  #get "boards/update"
+  #get "boards/edit"
+  #get "boards/destroy"
+  #get "boards/index"
+  #get "boards/show"
+  resources :boards do
+    resources :tacks, :only => [:create]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

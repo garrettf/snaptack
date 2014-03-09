@@ -4,7 +4,7 @@ Board:
     ----
     name :string(256)
     description :text
-    background :file
+    image :file
     width :integer
     height :integer
 
@@ -23,6 +23,7 @@ Photo:
     title :string(256)
     description :text
     number :integer
+    image :file
 
 User:
     has many boards
