@@ -1,6 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-    $('#tack_new').click ->
-    
+    $('.tack').click (e) ->
+        e.preventDefault()
+        $.ajax
+            url: $(this).attr('href')
+            type: 'GET'
+            dataType: 'json'
+            success: (data) ->
+                $('#tack_show_name').html(data["name"])
+                $('#tack_show_desc').html(data["description"])
+                $('#tack_show').modal('show')

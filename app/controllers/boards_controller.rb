@@ -38,7 +38,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @tack = @board.tacks.build
+    @tack = Tack.new
   end
 
 end

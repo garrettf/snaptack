@@ -1,20 +1,7 @@
-<h1>Boards#show</h1>
-<p>Find me in app/views/boards/show.html.erb</p>
 <h1>Name: <%= @board.name %></h1>
 <p>Description: <%= @board.description %></p>
 <p>Width: <%= @board.width %></p>
 <p>Height: <%= @board.height %></p>
-<h2>Tacks:</H2>
-<uL>
-<% @board.tacks.each do |tack| %>
-  <li>
-    <p>Name: <%= tack.name %></p>
-    <p>Description: <%= tack.description %></p>
-    <p>Top: <%= tack.top %></p>
-    <p>Left: <%= tack.left %></p>
-  </li>
-<% end %>
-</ul>
   
 <button type="button" class="btn btn-primary btn-lg" id="tack_new_btn" data-toggle="modal" data-target="#tack_new" >
     <span class="glyphicon glyphicon-pushpin"></span> Create new tack
@@ -22,15 +9,37 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="tack_new" tabindex="-1" role="dialog" aria-labelledby="tack_new_label" aria-hidden="true">
+<%= render :partial => 'tacks/form_modal', :tack => @tack %>
+
+
+<br>
+<div class="center-block text-center">
+    <div class="board" style="display: inline-block;">
+<%= image_tag @board.image.url %>
+<% @board.tacks.each do |tack| %>
+    <a href="<%= "/boards/#{@board.id}/tacks/#{tack.id}" %>" class="tack">
+        <span class="tack_icon glyphicon glyphicon-pushpin" style="top: <%= tack.top.to_f - 24 %>px; left: <%= tack.left %>px;"></span>
+    </a>
+<% end %>
+</div>
+</div>
+
+<div class="modal fade" id="tack_show" tabindex="-1" role="dialog" aria-labelledby="tack_show_name" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= render :partial => 'tacks/form', :tack => @tack %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="tack_show_name">Modal title</h4>
+      </div>
+      <div class="modal-body" id="tack_show_body">
+          <p id="tack_show_desc"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
 
+<!--<div class="board" style="background: url(<%= @board.image.url %>) no-repeat"> -->
 
-
-<br>
-<%= image_tag @board.image.url %>

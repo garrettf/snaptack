@@ -1,3 +1,15 @@
 // Place all the styles related to the Boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.board {
+    position: relative;
+}
+
+.tack_icon {
+    position: absolute;
+    font-size: 24px;
+    text-shadow: 0 0 2px #fff;
+    -moz-text-shadow: 0 0 2px #fff;
+    -webkit-text-shadow: 0 0 2px #fff;
+    color: #f00;
+}

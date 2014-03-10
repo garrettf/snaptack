@@ -1,6 +1,5 @@
 class TacksController < ApplicationController
   def create
-    
     @board = Board.find(params[:board_id])
     # TODO Check ownership of board.
     @tack = @board.tacks.build(tack_params)
@@ -9,6 +8,13 @@ class TacksController < ApplicationController
     else
       # TODO proper redirect
       redirect_to @board
+    end
+  end
+
+  def show
+    @tack = Tack.find(params[:id])
+    respond_to do |format|
+      format.json { render :json => @tack.to_json }
     end
   end
 
