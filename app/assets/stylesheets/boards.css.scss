@@ -5,6 +5,13 @@
     position: relative;
 }
 
+#board_img {
+    position: relative;
+    /*padding: 20px;*/
+    /*-webkit-box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);*/
+    /*box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);*/
+}
+
 .tack_icon {
     position: absolute;
     font-size: 24px;

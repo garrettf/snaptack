@@ -1,29 +1,30 @@
-<h1>Name: <%= @board.name %></h1>
-<p>Description: <%= @board.description %></p>
-<p>Width: <%= @board.width %></p>
-<p>Height: <%= @board.height %></p>
-  
-<button type="button" class="btn btn-primary btn-lg" id="tack_new_btn" data-toggle="modal" data-target="#tack_new" >
+<h1><%= @board.name %></h1>
+<p><%= @board.description %></p>
+
+<button type="button" class="btn btn-primary btn-lg" id="tack_new_btn" data-toggle="modal" data-target="#tack_newnonono" >
     <span class="glyphicon glyphicon-pushpin"></span> Create new tack
 </button>
 
 
-<!-- Modal -->
+<!-- New tack modal -->
 <%= render :partial => 'tacks/form_modal', :tack => @tack %>
 
-
 <br>
+
 <div class="center-block text-center">
     <div class="board" style="display: inline-block;">
-<%= image_tag @board.image.url %>
+        <%= image_tag @board.image.url, :id => 'board_img' %>
 <% @board.tacks.each do |tack| %>
+    <% if tack.valid? %>
     <a href="<%= "/boards/#{@board.id}/tacks/#{tack.id}" %>" class="tack">
         <span class="tack_icon glyphicon glyphicon-pushpin" style="top: <%= tack.top.to_f - 24 %>px; left: <%= tack.left %>px;"></span>
     </a>
+    <% end %>
 <% end %>
 </div>
 </div>
 
+<!-- Tack view modal -->
 <div class="modal fade" id="tack_show" tabindex="-1" role="dialog" aria-labelledby="tack_show_name" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -35,11 +36,45 @@
           <p id="tack_show_desc"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" id="photo_new_btn" data-dismiss="modal" data-target="#photo_new" >
+          <span class="glyphicon glyphicon-picture"></span> Add new photo
+        </button>
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-<!--<div class="board" style="background: url(<%= @board.image.url %>) no-repeat"> -->
+<!-- Photo create modal -->
+<div class="modal fade" id="photo_new" tabindex="-1" role="dialog" aria-labelledby="photo_new_label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="photo_new_label">Add new photo</h4>
+            </div>
+            <%= form_for @photo, :url => "", :html => { :multipart => true } do |f| %>
+            <div class="modal-body">
+                <div class="form-group">
+                    <%= f.label :title %>
+                    <%= f.text_field :title, :class => "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :description %>
+                    <%= f.text_field :description, :class => "form-control", :placeholder => '(optional)' %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :image %>
+                    <%= f.file_field :image, :class => "form-control" %> 
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <%= f.submit "Create", :class => "btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
 
+<div id="blackout"></div>

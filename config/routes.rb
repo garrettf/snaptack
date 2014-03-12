@@ -7,7 +7,9 @@ Snaptack::Application.routes.draw do
   #get "boards/index"
   #get "boards/show"
   resources :boards do
-    resources :tacks, :only => [:create, :show]
+    resources :tacks, :only => [:create, :show] do
+      resources :photos, :only => [:create, :show, :index]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -39,6 +39,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @tack = Tack.new
+    @photo = Photo.new
   end
 
 end
