@@ -1,27 +1,31 @@
-<h1><%= @board.name %></h1>
-<p><%= @board.description %></p>
-
-<button type="button" class="btn btn-primary btn-lg" id="tack_new_btn" data-toggle="modal" data-target="#tack_newnonono" >
-    <span class="glyphicon glyphicon-pushpin"></span> Create new tack
-</button>
-
+<div class="masthead">
+    <h1><%= @board.name %></h1>
+    <p><%= @board.description %></p>
+</div>
 
 <!-- New tack modal -->
 <%= render :partial => 'tacks/form_modal', :tack => @tack %>
 
 <br>
 
-<div class="center-block text-center">
-    <div class="board" style="display: inline-block;">
-        <%= image_tag @board.image.url, :id => 'board_img' %>
-<% @board.tacks.each do |tack| %>
-    <% if tack.valid? %>
-    <a href="<%= "/boards/#{@board.id}/tacks/#{tack.id}" %>" class="tack">
-        <span class="tack_icon glyphicon glyphicon-pushpin" style="top: <%= tack.top.to_f - 24 %>px; left: <%= tack.left %>px;"></span>
-    </a>
-    <% end %>
-<% end %>
-</div>
+<div class="center-block row">
+    <div class="board col-md-8">
+        <%= image_tag @board.image.url, :id => 'board_img', :data => { :width => @board.width, :height => @board.height } %>
+        <% @board.tacks.each do |tack| %>
+            <% if tack.valid? %>
+            <a href="<%= "/boards/#{@board.id}/tacks/#{tack.id}" %>" class="tack">
+                <span class="tack_icon glyphicon glyphicon-pushpin" style="top: <%= tack.top.to_f - 24 %>px; left: <%= tack.left %>px;" data-top="<%= tack.top.to_f %>" data-left="<%= tack.left %>"></span>
+            </a>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="board_details col-md-4 text-center">
+        <button type="button" class="btn btn-primary btn-lg" id="tack_new_btn" data-toggle="modal" data-target="#tack_newnonono" >
+            <span class="glyphicon glyphicon-pushpin"></span> Create new tack
+        </button>
+        <br>
+        <div class="fb-comments" data-href="http://example.com/comments" data-width="300" data-numposts="5" data-colorscheme="light"></div>
+    </div>
 </div>
 
 <!-- Tack view modal -->

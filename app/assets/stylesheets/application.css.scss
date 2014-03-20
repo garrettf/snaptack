@@ -11,7 +11,28 @@
  *= require_self
  *= require_tree .
  */
+$brand_primary: #545499;
 @import "bootstrap";
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.masthead {
+    font-size: 18px;
+    text-align: left;
+    background-color: #6F5499;
+    background-image: linear-gradient(to bottom, darken($brand_primary, 12%) 0px, $brand_primary 100%);
+    background-repeat: repeat-x;
+    color: #CDBFE3;
+    padding: 20px 15px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.masthead h1 {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.95);
+}
 
 #blackout {
     position: fixed;

@@ -40,6 +40,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @tack = Tack.new
     @photo = Photo.new
+    @title = @board.name
   end
 
 end

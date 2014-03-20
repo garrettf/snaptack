@@ -1,4 +1,6 @@
 Snaptack::Application.routes.draw do
+  get '/', :to => 'static_pages#index'
+  get '/about', :to => 'static_pages#about'
   #get "boards/new"
   #get "boards/create"
   #get "boards/update"

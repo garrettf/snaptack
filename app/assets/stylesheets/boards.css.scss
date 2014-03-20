@@ -1,12 +1,16 @@
 // Place all the styles related to the Boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$brand_primary: #99546D;
 .board {
+    float: left;
     position: relative;
+    padding: 0;
 }
 
 #board_img {
     position: relative;
+    width: 100%;
     /*padding: 20px;*/
     /*-webkit-box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);*/
     /*box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);*/
@@ -15,8 +19,14 @@
 .tack_icon {
     position: absolute;
     font-size: 24px;
-    text-shadow: 0 0 2px #fff;
-    -moz-text-shadow: 0 0 2px #fff;
-    -webkit-text-shadow: 0 0 2px #fff;
-    color: #f00;
+    color: #ff244d;
+    text-shadow:
+       0px  1px 0 rgba(255, 255, 255, 0.3),
+       1px  0px 0 rgba(255, 255, 255, 0.3),  
+       0px -1px 0 rgba(0, 0, 0, 0.1),
+      -1px  0px 0 rgba(0, 0, 0, 0.1);
+}
+
+.board_details {
+    /*float: left;*/
 }

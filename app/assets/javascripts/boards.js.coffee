@@ -1,5 +1,19 @@
 $ ->
-  currentTackURL = ""
+  # Update tack positions on render
+  tacks_positions_update = () ->
+    w_max = $('#board_img').data('width')
+    h_max = $('#board_img').data('height')
+    w = $('#board_img').width()
+    h = $('#board_img').height()
+    $('.tack_icon').each () ->
+      $(this).css('left', Math.round($(this).data('left') / w_max * w) + 'px')
+      $(this).css('top', Math.round($(this).data('top') / h_max * h) - 24 + 'px')
+
+  $(window).load () ->
+    tacks_positions_update()
+  $(window).resize () ->
+    tacks_positions_update()
+
   $('.tack').click (e) ->
     e.preventDefault()
     currentTackURL = $(this).attr('href')
@@ -36,8 +50,12 @@ $ ->
     $('.tack_icon').css('z-index', '1001')
     $('#board_img').on 'click', (e) ->
       offset = $(this).offset()
-      $('#tack_top').val( Math.round(e.clientY - offset.top) )
-      $('#tack_left').val( Math.round(e.clientX - offset.left) )
+      w_max = $('#board_img').data('width')
+      h_max = $('#board_img').data('height')
+      w = $('#board_img').width()
+      h = $('#board_img').height()
+      $('#tack_top').val( Math.round((e.clientY - offset.top) / h * h_max) )
+      $('#tack_left').val( Math.round((e.clientX - offset.left) / w * w_max) )
       $('#board_img').css('cursor', 'auto')
       $('#blackout').fadeOut 200, ->
         $('#board_img').css('z-index', 'auto')
