@@ -29,7 +29,12 @@ class Board < ActiveRecord::Base
 
   #validates_presence_of :user
   #validates_associated :user
+
+  validates :name, :presence => true, :length => { :maximum => 256 }
   validates_attachment_content_type :image, :content_type => /\Aimage/
   validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/]
-
+  validates_attachment :image, :presence => true,
+                               :content_type => { :content_type => /\Aimage/ },
+                               :file_name => { :matches => [/png\Z/, /jpe?g\Z/] },
+                               :size => { :in => 0..15.megabytes }
 end

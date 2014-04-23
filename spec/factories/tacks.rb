@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :tack do
-    name "MyString"
-    description "MyText"
+    name "Example Tack"
+    description "Example description."
     top 1
     left 1
-    board nil
+    board
   end
 end
