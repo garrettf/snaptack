@@ -13,7 +13,7 @@
         <%= image_tag @board.image.url, :id => 'board_img', :data => { :width => @board.width, :height => @board.height } %>
         <% @board.tacks.each do |tack| %>
             <% if tack.valid? %>
-            <a href="<%= "/boards/#{@board.id}/tacks/#{tack.id}" %>" class="tack">
+            <a href="<%= request.path + "/tacks/#{tack.id}" %>" class="tack">
                 <span class="tack_icon glyphicon glyphicon-pushpin" style="top: <%= tack.top.to_f - 24 %>px; left: <%= tack.left %>px;" data-top="<%= tack.top.to_f %>" data-left="<%= tack.left %>"></span>
             </a>
             <% end %>

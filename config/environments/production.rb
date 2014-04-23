@@ -77,4 +77,8 @@ Snaptack::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Use sub-uri in production
+  #config.relative_url_root = '/snaptack'
+  config.action_controller.relative_url_root = '/snaptack'
 end

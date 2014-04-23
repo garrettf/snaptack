@@ -4,11 +4,11 @@ class PhotosController < ApplicationController
       format.json do
         @tack = Tack.find(params[:tack_id])
         output = []
-        @tack.photos.each do |photo|
+        @tack.photos.order("created_at desc").each do |photo|
           output << {:id => photo.id,
                      :title => photo.title,
                      :description => photo.description,
-                     :url => photo.image.url(:medium) }
+                     :url => view_context.image_path(photo.image.url(:medium)) }
         end
         render :json => output.to_json
       end

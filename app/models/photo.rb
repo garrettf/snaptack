@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id                 :integer          not null, primary key
+#  tack_id            :integer
+#  title              :string(256)
+#  description        :text
+#  number             :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  demo               :boolean          default(FALSE)
+#
+
 class Photo < ActiveRecord::Base
   #attr_accessible :title, :description, :number, :image
 

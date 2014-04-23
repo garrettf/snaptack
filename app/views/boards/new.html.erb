@@ -1,5 +1,4 @@
-<h1>Boards#create</h1>
-<p>Find me in app/views/boards/create.html.erb</p>
+<h1>Create a new board</h1>
 <%= form_for @board, :url => {action: "create"}, :html => { :multipart => true } do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %> <br>

@@ -2,10 +2,9 @@
 
 FactoryGirl.define do
   factory :board do
-    name "MyString"
-    description "MyText"
-    width 1
-    height 1
+    name 'Example Board'
+    description 'Example description.'
+    image { File.new("#{Rails.root}/spec/fixtures/images/board.jpg") } 
     user nil
   end
 end

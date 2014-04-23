@@ -1,0 +1,21 @@
+/ Static navbar
+.navbar.navbar-default{:role => "navigation"}
+  .container-fluid
+    .navbar-header
+      = link_to 'Snaptack Demo', root_path, :class => 'navbar-brand'
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        - if current_page?(:controller => 'static_pages', :action => 'about')
+          %li.active= link_to "About", :controller => 'static_pages', :action => 'about'
+        - else
+          %li= link_to "About", :controller => 'static_pages', :action => 'about'
+        %li= link_to 'Example 1', board_path(1)
+        %li
+          %a{:href => "#"} Example 2
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "./"} Logged in as Anonymous
+        /%li
+        /  %a{:href => "./"} Log out?
+    / /.nav-collapse
+  / /.container-fluid

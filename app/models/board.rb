@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: boards
+#
+#  id                 :integer          not null, primary key
+#  name               :string(256)
+#  description        :text
+#  width              :integer
+#  height             :integer
+#  user_id            :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  demo               :boolean          default(FALSE)
+#
+
 class Board < ActiveRecord::Base
   # attr_accessible :name, :description, :image, :width, :height
   has_many :tacks, :dependent => :destroy
@@ -13,7 +32,4 @@ class Board < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage/
   validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/]
 
-  def self.cleanup!(cutoff)
-    Board.destroy_all(["id != 9 AND created_at < (?)", cutoff])
-  end
 end

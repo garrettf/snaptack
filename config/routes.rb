@@ -1,4 +1,5 @@
 Snaptack::Application.routes.draw do
+  root :to => 'static_pages#index'
   get '/', :to => 'static_pages#index'
   get '/about', :to => 'static_pages#about'
   #get "boards/new"
@@ -8,7 +9,7 @@ Snaptack::Application.routes.draw do
   #get "boards/destroy"
   #get "boards/index"
   #get "boards/show"
-  resources :boards do
+  resources :boards, :only => [:create, :show, :new] do
     resources :tacks, :only => [:create, :show] do
       resources :photos, :only => [:create, :show, :index]
     end

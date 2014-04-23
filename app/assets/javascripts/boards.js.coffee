@@ -17,6 +17,7 @@ $ ->
   $('.tack').click (e) ->
     e.preventDefault()
     currentTackURL = $(this).attr('href')
+    $('#new_photo').attr('action', currentTackURL + '/photos')
     $.ajax
       url: $(this).attr('href')
       type: 'GET'
@@ -35,7 +36,6 @@ $ ->
 
   # Update photo form when opening new photo modal
   $('#photo_new_btn').click ->
-    $('#new_photo').attr('action', currentTackURL + '/photos')
     $('#photo_new').modal('show')
 
   # Clear images when closing a tack

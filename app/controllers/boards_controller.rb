@@ -25,15 +25,19 @@ class BoardsController < ApplicationController
   end
 
   def update
+    redirect_to :action => 'new'
   end
 
   def edit
+    redirect_to :action => 'new'
   end
 
   def destroy
+    redirect_to :action => 'new'
   end
 
   def index
+    redirect_to :action => 'new'
   end
 
   def show

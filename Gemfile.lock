@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: c60fa282d74051e2fb5d41b600f919a39d9edcb4
+  specs:
+    annotate (2.6.3)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
+
+GIT
   remote: git://github.com/emmanueloga/ffaker.git
   revision: 326d0045141f2c5c790080e002563f320251cc95
   specs:
@@ -217,6 +225,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
   factory_girl_rails (~> 4.0)

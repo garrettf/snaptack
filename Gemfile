@@ -50,6 +50,7 @@ group :test, :development do
   gem 'guard-rspec', '~> 4.2.7', :require => false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'ffaker', :github => 'emmanueloga/ffaker'
+  gem 'annotate', :github => 'ctran/annotate_models'
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
