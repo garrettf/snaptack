@@ -5,6 +5,6 @@ FactoryGirl.define do
     tack nil
     title "MyString"
     description "MyText"
-    number 1
+    sequence(:number)
   end
 end

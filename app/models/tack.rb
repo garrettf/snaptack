@@ -16,9 +16,15 @@
 class Tack < ActiveRecord::Base
   #attr_accessible :name, :description, :top, :left
 
-  has_many :photos, :dependent => :destroy
+  has_many :photos, dependent: :destroy
   belongs_to :board
 
-  validates_presence_of :board
-  validates_associated :board
+  validates :board, presence: true,
+                    associated: true
+  validates :top, presence: true,
+    numericality: { greater_than_or_equal_to: 0,
+                    less_than: ->(tack) { !tack.board.nil? ? tack.board.height : 0 } }
+  validates :left, presence: true,
+    numericality: { greater_than_or_equal_to: 0,
+                    less_than: ->(tack) { !tack.board.nil? ? tack.board.width : 0 } }
 end

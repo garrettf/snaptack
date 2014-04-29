@@ -27,6 +27,8 @@ class Board < ActiveRecord::Base
                     :default_url => "/images/:style/missing.png"
   belongs_to :user
 
+  before_save :extract_dimensions
+
   #validates_presence_of :user
   #validates_associated :user
 
@@ -37,4 +39,22 @@ class Board < ActiveRecord::Base
                                :content_type => { :content_type => /\Aimage/ },
                                :file_name => { :matches => [/png\Z/, /jpe?g\Z/] },
                                :size => { :in => 0..15.megabytes }
+
+  def image?
+    image_content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|png|x-png)$}
+  end
+
+  private
+
+  # Retrieves dimensions for image assets
+  # @note Do this after resize operations to account for auto-orientation.
+  def extract_dimensions
+    return unless image?
+    tempfile = image.queued_for_write[:original]
+    unless tempfile.nil?
+      geometry = Paperclip::Geometry.from_file(tempfile)
+      self.width = geometry.width.to_i 
+      self.height = geometry.height.to_i
+    end
+  end
 end

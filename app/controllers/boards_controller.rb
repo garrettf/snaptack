@@ -12,6 +12,8 @@ class BoardsController < ApplicationController
       return
     end
 
+    # TODO: Complete migration of width/height logic to model.
+    # Actually, you should just be able to replace this with params[:board].
     @board = Board.new(:name => params[:board][:name],
                        :description => params[:board][:description],
                        :image => params[:board][:image],
@@ -22,22 +24,6 @@ class BoardsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def update
-    redirect_to :action => 'new'
-  end
-
-  def edit
-    redirect_to :action => 'new'
-  end
-
-  def destroy
-    redirect_to :action => 'new'
-  end
-
-  def index
-    redirect_to :action => 'new'
   end
 
   def show

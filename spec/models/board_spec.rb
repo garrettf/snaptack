@@ -31,6 +31,20 @@ describe Board do
     end
   end
 
+  describe 'width' do
+    before { @board.save }
+    it 'should be generated' do
+      expect(@board.width).to_not be_nil
+    end
+  end
+
+  describe 'height' do
+    before { @board.save }
+    it 'should be generated' do
+      expect(@board.height).to_not be_nil
+    end
+  end
+
   describe 'tack associations' do
     before { @board.save }
     let!(:tack) do
