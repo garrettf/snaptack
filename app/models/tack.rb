@@ -10,7 +10,6 @@
 #  board_id    :integer
 #  created_at  :datetime
 #  updated_at  :datetime
-#  demo        :boolean          default(FALSE)
 #
 
 class Tack < ActiveRecord::Base
