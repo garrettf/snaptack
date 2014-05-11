@@ -1,5 +1,6 @@
 <h1>Create a new board</h1>
 <%= form_for @board, :url => {action: "create"}, :html => { :multipart => true } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :name %>
   <%= f.text_field :name %> <br>
   <%= f.label :description %>

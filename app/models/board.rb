@@ -21,24 +21,26 @@ class Board < ActiveRecord::Base
   # attr_accessible :name, :description, :image, :width, :height
   has_many :tacks, :dependent => :destroy
   has_attached_file :image,
-                    :styles => { :medium => "100x100>", :thumb => "100x100>" },
-                    :path => ":rails_root/public/assets/boards/:id/:style/:basename.:extension",
-                    :url => "/assets/boards/:id/:style/:basename.:extension",
-                    :default_url => "/images/:style/missing.png"
+                    styles: { medium: "100x100>", thumb: "100x100>" },
+                    path: ":rails_root/public/assets/boards/:id/:style/:basename.:extension",
+                    url: "/assets/boards/:id/:style/:basename.:extension",
+                    default_url: "/images/:style/missing.png"
   belongs_to :user
 
-  before_save :extract_dimensions
+  before_validation :extract_dimensions
 
   #validates_presence_of :user
   #validates_associated :user
 
-  validates :name, :presence => true, :length => { :maximum => 256 }
-  validates_attachment_content_type :image, :content_type => /\Aimage/
-  validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/]
-  validates_attachment :image, :presence => true,
-                               :content_type => { :content_type => /\Aimage/ },
-                               :file_name => { :matches => [/png\Z/, /jpe?g\Z/] },
-                               :size => { :in => 0..15.megabytes }
+  validates :name, presence: true, length: { maximum: 256 }
+  validates :width,  presence: true,
+                     numericality: { greater_than: 0 }
+  validates :height, presence: true,
+                     numericality: { greater_than: 0 }
+  validates_attachment :image, presence: true,
+                               content_type: { content_type: /\Aimage/ },
+                               file_name: { matches: [/png\Z/, /jpe?g\Z/] },
+                               size: { in: 0..15.megabytes }
 
   def image?
     image_content_type =~ %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|png|x-png)$}

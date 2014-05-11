@@ -48,7 +48,7 @@ group :test, :development do
   gem 'rspec', '~> 3.0.0.beta2'
   gem 'rspec-rails', '~> 3.0.0.beta2'
   gem 'guard-rspec', '~> 4.2.7', :require => false
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_girl_rails', '~> 4.2.0'
   gem 'ffaker', :github => 'emmanueloga/ffaker'
   gem 'annotate', :github => 'ctran/annotate_models'
   gem 'spring'
@@ -65,3 +65,10 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :test do
+  gem 'selenium-webdriver', '~> 2.41.0'
+  gem 'capybara', '~> 2.2.1'
+  gem 'cucumber-rails', '1.3.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+end
