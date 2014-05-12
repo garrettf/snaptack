@@ -7,6 +7,8 @@ code coverage is patchy here and there, the UI is slapped together, and
 lots of it isn't implemented yet. But it posts photo galleries on top of
 images!
 
+Live demo fork lives at [garrettf.com/snaptack](http://garrettf.com/snaptack).
+
 ## To do list
 * Speed up tests.
 * Test JS.
