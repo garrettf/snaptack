@@ -6,7 +6,7 @@ class TacksController < ApplicationController
     if @tack.save
       redirect_to @board
     else
-      # TODO proper redirect
+      # TODO display errors
       redirect_to @board
     end
   end
